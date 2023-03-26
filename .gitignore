@@ -201,3 +201,6 @@ terraform.rc
 
 # End of https://www.toptal.com/developers/gitignore/api/terraform,python
 
+# Ignore packaged lambdas
+package/
+dist/

@@ -1,0 +1,9 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+    build:
+        cmds:
+            - ./package_lambdas.sh
+        silent: true
