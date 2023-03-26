@@ -9,3 +9,15 @@ variable "project" {
   description = "Project name"
   default     = "le.onl"
 }
+
+variable "domain" {
+  type        = string
+  description = "Domain name"
+  default     = "le.onl"
+}
+
+variable "cloudflare_api_token" {
+  type        = string
+  description = "Cloudflare API Token"
+  sensitive   = true
+}
