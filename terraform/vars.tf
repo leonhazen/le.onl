@@ -12,8 +12,14 @@ variable "project" {
 
 variable "domain" {
   type        = string
-  description = "Domain name"
+  description = "Domain zone"
   default     = "le.onl"
+}
+
+variable "hostname" {
+  type        = string
+  description = "Hostname"
+  default     = "api.le.onl"
 }
 
 variable "cloudflare_api_token" {
