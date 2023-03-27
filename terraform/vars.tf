@@ -4,12 +4,6 @@ variable "region" {
   default     = "ap-southeast-2"
 }
 
-variable "project" {
-  type        = string
-  description = "Project name"
-  default     = "le.onl"
-}
-
 variable "domain" {
   type        = string
   description = "Domain zone"
