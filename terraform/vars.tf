@@ -21,3 +21,9 @@ variable "cloudflare_api_token" {
   description = "Cloudflare API Token"
   sensitive   = true
 }
+
+variable "environment" {
+  type        = string
+  description = "Environment name"
+  default     = "dev"
+}
