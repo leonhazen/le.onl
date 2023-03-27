@@ -1,6 +1,6 @@
 resource "aws_api_gateway_domain_name" "api" {
   domain_name              = var.hostname
-  regional_certificate_arn = aws_acm_certificate.api.arn
+  regional_certificate_arn = aws_acm_certificate_validation.api.certificate_arn
 
   endpoint_configuration {
     types = ["REGIONAL"]
@@ -25,7 +25,7 @@ resource "cloudflare_record" "api" {
   value   = aws_api_gateway_domain_name.api.regional_domain_name
   type    = "CNAME"
   ttl     = 300
-  proxied = true
+  proxied = false
 }
 
 resource "cloudflare_record" "validation" {
@@ -42,4 +42,8 @@ resource "cloudflare_record" "validation" {
   type    = each.value.type
   ttl     = 60
   proxied = false
+}
+
+resource "aws_acm_certificate_validation" "api" {
+  certificate_arn = aws_acm_certificate.api.arn
 }
