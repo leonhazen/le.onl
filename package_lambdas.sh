@@ -4,6 +4,8 @@ ROOT_DIR=$(dirname $(readlink -f $0))
 LAMBDAS_DIR="$ROOT_DIR/lambda"
 DIST_DIR="$ROOT_DIR/dist"
 
+mkdir -p $DIST_DIR
+
 echo "Packaging functions in $LAMBDAS_DIR..."
 for func_dir in $(find $LAMBDAS_DIR -mindepth 1 -maxdepth 1 -type d); do
   func_name=$(basename $func_dir)
