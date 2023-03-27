@@ -12,6 +12,17 @@ resource "aws_acm_certificate" "api" {
   validation_method = "DNS"
 }
 
+
+resource "aws_acm_certificate_validation" "api" {
+  certificate_arn = aws_acm_certificate.api.arn
+}
+
+resource "aws_api_gateway_base_path_mapping" "api" {
+  domain_name = aws_api_gateway_domain_name.api.domain_name
+  api_id      = aws_api_gateway_rest_api.api.id
+  stage_name  = var.environment
+}
+
 # Create CNAME record in cloudflare
 data "cloudflare_zones" "zones" {
   filter {
@@ -42,8 +53,4 @@ resource "cloudflare_record" "validation" {
   type    = each.value.type
   ttl     = 60
   proxied = false
-}
-
-resource "aws_acm_certificate_validation" "api" {
-  certificate_arn = aws_acm_certificate.api.arn
 }
