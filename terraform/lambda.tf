@@ -91,3 +91,14 @@ resource "aws_iam_role_policy_attachment" "lambda_logs" {
   role       = aws_iam_role.lambda_execution_role.name
   policy_arn = aws_iam_policy.lambda_logging.arn
 }
+
+resource "aws_lambda_permission" "api_gateway_invoke_permission" {
+  for_each = local.lambda_configurations
+
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.lambda[each.key].function_name
+  principal     = "apigateway.amazonaws.com"
+
+  # The source ARN is the ARN of the API Gateway resource and method
+  source_arn = "${aws_api_gateway_rest_api.api.execution_arn}/*/${each.value.method}${aws_api_gateway_resource.resource[each.key].path}"
+}
