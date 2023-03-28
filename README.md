@@ -65,3 +65,7 @@ Assumes you have AWS credentials configured already for AWS CLI. The AWS Terrafo
 CloudFlare API token is less likely to already be available in existing env vars. `secrets.sh` is a basic script to query BitWarden vault for API token and populate env var. Note that this must be dot sourced like `. ./secrets.sh` - this is required so that the env var is available after script execution.
 
 Another key note is that sensitive values may exist in the Terraform state. Terraform recommend using Terraform cloud to provide secure state storage, or you can use S3 backed state with AWS controls such as IAM permissions and encryption at rest to provide more safety.
+
+## API functions
+
+GET https://api.le.onl/ip - returns requestor IP
