@@ -13,7 +13,7 @@ variable "domain" {
 variable "hostname" {
   type        = string
   description = "Hostname"
-  default     = "api.le.onl"
+  default     = "ip.le.onl"
 }
 
 variable "cloudflare_api_token" {
@@ -25,5 +25,5 @@ variable "cloudflare_api_token" {
 variable "environment" {
   type        = string
   description = "Environment name"
-  default     = "dev"
+  default     = "prod"
 }
