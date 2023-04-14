@@ -1,3 +1,8 @@
+## NOTE
+
+The `ip-only` branch is what I'm actually using, much of the below has been simplified because I wanted to just publish a single lambda function at https://ip.le.onl/ as a 'What is my IP' endpoint.
+The lambda_configurations below won't allow for a mapping for the root `/` path. I might still combine the two, with config for a root function and a block for additional path mappings, but it wasn't necessary for what I want.
+
 # Personal API
 
 The purpose of this project is to create a custom API on AWS using Terraform.
